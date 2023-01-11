@@ -107,40 +107,40 @@
 				} là người đã ghi bàn</p>`;
 		}
 		// 2. Sử dụng vòng lặp để tính tỉ lệ kết quả trận đấu và in ra console (Chúng ta đã
-// học cách tính trung bình tổng ở phần trước, các bạn có thể xem lại nếu không
-// nhớ)
-let sum = 0;
-for (const odd of Object.values(game?.odds)) {
-	sum += odd;
-}
-const avg = sum / Object.values(game?.odds).length;
-console.log('avg', avg);
+		// học cách tính trung bình tổng ở phần trước, các bạn có thể xem lại nếu không
+		// nhớ)
+		let sum = 0;
+		for (const odd of Object.values(game?.odds)) {
+			sum += odd;
+		}
+		const avg = sum / Object.values(game?.odds).length;
+		console.log('avg', avg);
 
-// 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
-//  Tỉ lệ thắng của Bayern Munich: 1.33
-//  Tỉ lệ hòa of draw: 3.25
-//  Tỉ lệ thắng của Borrussia Dortmund: 6.5
-// Lấy ra tên đội bóng trực tiếp từ object 'game', bạn không nên "hardcode" tỉ lệ
-// thắng của mỗi đội (ngoại trừ trường hợp 2 đội hòa nhau).
-for (const [team, odd] of Object.entries(game.odds)) {
-	const gameStr = team === 'x' ? 'hòa of draw' : ` thắng của ${game[team]}`;
-	console.log(`Tỉ lệ ${gameStr}: ${odd}`);
-}
+		// 3. Print the 3 odds to the console, but in a nice formatted way, exaclty like this:
+		//  Tỉ lệ thắng của Bayern Munich: 1.33
+		//  Tỉ lệ hòa of draw: 3.25
+		//  Tỉ lệ thắng của Borrussia Dortmund: 6.5
+		// Lấy ra tên đội bóng trực tiếp từ object 'game', bạn không nên "hardcode" tỉ lệ
+		// thắng của mỗi đội (ngoại trừ trường hợp 2 đội hòa nhau).
+		for (const [team, odd] of Object.entries(game.odds)) {
+			const gameStr = team === 'x' ? 'hòa of draw' : ` thắng của ${game[team]}`;
+			console.log(`Tỉ lệ ${gameStr}: ${odd}`);
+		}
 
-// Thêm: Tạo ra 1 đối tướng là 'scorers', đối tượng này gồm các thuộc tính với key
-// (tên thuộc tính) là tên cầu thủ đã ghi bàn, value (giá trị) là số bàn thắng đã ghi.
-// Ví dụ:
-//  {
-// Gnarby:1,
-// Hummels:1,
-// Lewandowski: 2
-//  }
-const scorers = {};
-for (const scorer of Object.entries(game.scored)) {
-	scorers[scorer] ? scorers[scorer]++ : (scorers[scorer] = 1);
-	console.log('scorers[scorer]', scorers[scorer]);
-}
-console.log('scorers', scorers);
+		// Thêm: Tạo ra 1 đối tướng là 'scorers', đối tượng này gồm các thuộc tính với key
+		// (tên thuộc tính) là tên cầu thủ đã ghi bàn, value (giá trị) là số bàn thắng đã ghi.
+		// Ví dụ:
+		//  {
+		// Gnarby:1,
+		// Hummels:1,
+		// Lewandowski: 2
+		//  }
+		const scorers = {};
+		for (const scorer of Object.entries(game.scored)) {
+			scorers[scorer] ? scorers[scorer]++ : (scorers[scorer] = 1);
+			console.log('scorers[scorer]', scorers[scorer]);
+		}
+		console.log('scorers', scorers);
 	</script>
 </body>
 

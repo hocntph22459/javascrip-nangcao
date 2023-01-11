@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const game = new Map([
+            [12, 'ghi bàn'],
+            [18, 'thẻ vàng'],
+            [25, 'thay người'],
+            [32, 'thay người'],
+            [42, 'thẻ vàng'],
+            [60, 'ghi bàn'],
+            [64, 'thẻ vàng'],
+            [72, 'ghi bàn'],
+            [86, 'thay người'],
+            [91, 'thay người'],
+            [92, 'ghi bàn'],
+        ]);
+        // Bây giờ chúng ta có 1 mảng liên kế gồm các sự kiện xảy ra trong trận đấu cùng
+        // gian tương ứng
+        // 1. Hãy tạo ra 1 mảng các sự kiện khác nhau xảy ra trong suốt trận đấu (lưu ý là
+        // không trùng nhau)
+        // console.log(game.values());
+        const event = new Set(game.values());
+        console.log(event);
+        // 2. Sau khi trò chơi kết thúc, phát hiện ra rằng thẻ vàng phút 64 là không đúng. Hãy 
+        // xóa nó khỏi danh sách sự kiện trong trận đấu.
+        game.delete(64)
+//         3. In ra console theo định dang như sau:"1 sự kiện xảy ra, trung bình mỗi 9 phút". 
+// Lưu ý răng mỗi trận đấu có 90 phút.
+    </script>
+</body>
+
+</html>
