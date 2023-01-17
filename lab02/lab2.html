@@ -9,6 +9,11 @@
 </head>
 
 <body>
+    <div class="container">
+        <h1>fpt polytechnicc.</h1>
+        <textarea cols="30" rows="10" placeholder="Enter..."></textarea>
+        <button>submit</button>
+    </div>
     <script>
         const game = new Map([
             [5, 'ghi bàn'],
@@ -47,6 +52,90 @@
             if (key <= 45) console.log(`[hiệp 1] ${key} : ${value}`);
             else console.log(`[hiệp 2] ${key} : ${value}`);
         }
+
+        //         LAB2.2: (SECTION	9: DATA	STRUCTURES. MODERN	OPERATORS	AND	STRINGS	> CODING	
+        // CHANLLENGE	#4)
+        // Viết 1 chương trình nhận vào 1 danh sách các biến được viết theo kiểu 
+        // underscore (ví dụ: ten_bien) và chuyển nó sang dạng camelCase (ví dụ: tenBien)
+        // Đầu vào sẽ đến từ một vùng văn bản được chèn vào DOM (xem mã bên dưới) và 
+        // chuyển đổi sẽ xảy ra khi nhấn nút.
+        // - Dưới đây là dữ liệu đầu vào cần test:
+        // underscore_case
+        // first_name
+        // Some_Variable
+        // calculate_AGE
+        // delayed_departure
+        // - Đầu ra mong muốn (Hãy log các kết quả này ra màn hình để đối chiếu với 
+        // kết quả phía dưới)
+        // underscoreCase ✅
+        // firstName ✅✅
+        // someVariable ✅✅✅
+        // calculateAge ✅✅✅✅
+        // delayedDeparture ✅✅✅✅✅
+        // Lưu ý 1: Hãy lưu ý rằng ký tự nào xuất hiện 1 ký tự xuống dòng "\n" trong đoạn 
+        // text �
+        // Lưu ý 2: Giải pháp đơn giản cho phần này là tách ra 2 từ từ ký tự đầu vào ví dụ: 
+        // ("a_b" -> "a" và "b")
+        // Lưu ý 3: Đừng để ý về dấu tick kia ✅. Vấn đề sẽ được giải quyết khi bạn chuyển 
+        // đổi �
+        // Lưu ý 4: Thử thách này có thể sẽ khó với bạn, vì vậy hãy bắt đầu xem cách giải 
+        // trong trường hợp cảm thấy không có hướng giải quyết.
+        // Sau cùng, hãy test các kết quả đầu vào của bạn xem có đúng không ?
+        const button = document.querySelector('button');
+
+        button.addEventListener('click', () => {
+            const textarea = document.querySelector('textarea');
+            const rows = textarea.value.split('\n');
+            for (const [index, row] of rows.entries()) {
+                const [first, second] = row.toLowerCase().trim().split('_');
+                const output = `${first}${second.replace(
+                    second[0],
+                    second[0].toUpperCase()
+                )}`;
+                console.log(`${output.padEnd(20)}${'✅'.repeat(index + 1)}`);
+            }
+        });
+
+
+
+        // LAB2.3: (SECTION	9: DATA	STRUCTURES. MODERN	OPERATORS	AND	STRINGS	> STRING
+        // METHOD	PRACTICE)
+        // Thực hiện code ví dụ sau
+        // String Methods Practice
+        const flights =
+            '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+        // � Delayed Departure from FAO to TXL (11h25)
+        // Arrival from BRU to FAO (11h45)
+        // � Delayed Arrival from HEL to FAO (12h05)
+        // Departure from FAO to LIS (12h30)
+        const getCode = (str) => str.slice(0, 3).toUpperCase();
+        for (const flight of flights.split('+')) {
+            const [type, from, to, time] = flight.split(';');
+            const output = `${type.startsWith('_Delayed') ? '�' : ''}${type.replaceAll(
+                '_',
+                ' '
+            )} ${getCode(from)} ${getCode(to)} (${time.replace(':', 'h')})`.padStart(36);
+            console.log(output);
+        }
+
+        // LAB2.4: (SECTION	10: A CLOSER	LOOK	AT	FUNCTIONS	> CODING	CHANLLENGE	#2)
+        // Lấy hàm IIFE dưới đây, và ở cuối function hãy gắn 1 event thay đổi màu của thẻ
+        // 'h1' sang màu xanh dương (blue) sau mỗi lần click vào element body. Chúng ta
+        // không select đến thẻ h1 đó nữa!
+        // Và sau đó hãy tự giải thích lại cho chính mình hoặc bạn học của mình Tại sao nó
+        // lại hoạt động!
+        // Hãy bình tĩnh nghĩ xem chính xác thì khi nào callback được thực thi, và biến được
+        // sử dụng trong ví dụ này có ý nghĩa gì?.
+        (function () {
+            // LAB	2
+            // LẬP TRÌNH JAVASCRIPT NÂNG CAO TRANG 4
+            const header = document.querySelector('h1');
+            header.style.color = 'red';
+            document.querySelector('body').addEventListener('click', function () {
+                header.style.color = 'blue';
+            });
+        })();
+
     </script>
 </body>
 
