@@ -491,3 +491,174 @@ const checkDogs = function(dogsJulia,dogsKate){
 
 }
 checkDogs([9, 16, 6, 8, 3],[10, 5, 6, 1, 4])
+
+
+
+// LAB3.3: (SECTION	11: WORKING	WITH	ARRAY > CODING	CHALLENGE	#2)
+// Julia và Kate's đang học về loài chó. Lần này họ muốn tính tuổi trung bình của chó 
+// theo tuổi của người.
+// Viết 1 hàm gọi là 'calcAverageHumanAge', nhận vào 1 danh sách tuổi của các chú 
+// chó ('ages'), và hãy làm theo thứ tự sau
+// 1. Tính tuổi của chó theo tuổi của con người theo công thức sau: nếu tuổi của chó 
+// <= 2, tuổi của người = tuổi của chó * 2. Nếu tuổi của chó > 2, tuổi người = 16 + 
+// tuổi của chó * 4.
+// 2. Loại trừ tất cả những chú chó có tuổi nhỏ hơn so với 1 người 18 tuổi (lấy ra tất 
+// cả những chú chó trên 18 tuổi)
+// 3. Tính tuổi trung bình của các chú chó trưởng thành ra tuổi người
+// 4. Chạy hàm với các dữ liệu mẫu dưới đây:
+// TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+// TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+const calcAverageHumanAge = function(ages){
+  const humanages = ages.map(age => age <= 2 ? 2 * age : 16 + age * 4)
+  // console.log(humanages);
+  const list = humanages.filter(age => age >= 18);
+    console.log(humanages);
+    console.log(list);
+
+  const avg = list.reduce((acc,age,i,arr)=>acc + age / arr.length , 0);
+  return avg;
+};
+
+const avg1 = calcAverageHumanAge ([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge ([16, 6, 10, 5, 6, 1, 4]);
+
+console.log(avg1,avg2);
+
+
+
+
+
+
+
+
+
+
+
+// LAB3.4: (SECTION	11: WORKING	WITH	ARRAY > CODING	CHALLENGE	#4)
+// Julia và Kate đang học về loài chó, và lần này họ đang học xem sẽ ra sao nếu chó 
+// ăn quá nhiều hoặc quá ít.
+// Ăn quá nhiều đồng nghĩa với phần ăn của chó lớn hơn mức khẩu phần khuyến 
+// nghị và ngược lại nếu ăn quá ít
+// Khẩu phần ăn hợp lý là lớn hơn hoặc nhỏ hơn không vượt quá 10% khẩu phần ăn 
+// khuyến nghị
+// 1. Lặp mảng gồm các object là thông tin của những chú chó, và với mỗi chú chó, 
+// thêm 1 thuộc tính mới vào object là khẩu phẩn ăn hợp lý (recommended). KHÔNG 
+// TẠO THÊM MẢNG MỚI, chỉ đơn giản là lặp mảng. Công thức: recommendedFood 
+// = weight ** 0.75 * 28. (kết quả là khổi lượng thức ăn đượ tính theo gram, và cân 
+// nặng của chú chó được tính theo kg)
+// 2. Tìm ra chú chó của Sarah và in ra console xem chú chó đó ăn quá nhiều hay quá 
+// ít. Lưu ý: Lưu ý 1 vài chú chó có nhiều hơn 1 chủ, vì vậy bạn phải tìm ra Sarah 
+// trong mảng 'owner' �
+// 3. Tạo ra mảng chứa tất cả chủ của những chú chó ăn quá nhiều 
+// ('ownersEatTooMuch') và 1 mảng chứa tất cả chủ của những chú chó ăn quá ít 
+// ('ownersEatTooLittle').
+// 4. In ra 1 chuỗi tương ứng với mỗi mảng đã tạo ở Yêu cầu 3, Ví dụ: "Matilda and 
+// Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat 
+// too little!"
+// LẬP TRÌNH JAVASCRIPT NÂNG CAO TRANG 4
+// 5. In ra xem có chú chó nào có khẩu phần ăn chính xác với khẩu phần ăn khuyến 
+// nghị (output yêu cầu là 'true' hoặc 'false')
+// 6. In ra xem có chú chó nào có khẩu phần ăn ở mức hợp lý (không >10% hoặc 
+// <10% mức đề nghị)(output yêu cầu là 'true' hoặc 'false')
+// 7. In ra tất cả các chú chó có khẩu phần ăn hợp lý (sử dụng lại điều kiện đã tìm 
+// được ở y.c 6 để in ra mảng gồm các phần tử thỏa mãn)
+// 8. Tạo ra 1 mảng chưa các chú chó mới và sắp xếp theo khẩu phần ăn đề nghị
+// theo thứ tự tăng dần (hãy nhớ rằng khẩu phần ăn của mỗi chú chó nằm trong 
+// mảng mỗi object thuộc mảng)
+// HINT 1: Có thể sử dụng những công cụ khác nhau để xử lý bài toán, bạn có thể
+// tổng hợp lại bài học để chọn ra 1 trong số các tất các cách làm mà bạn hiểu �
+// HINT 2: Khẩu phần ăn không quá 10% hoặc ít hơn 10% khẩu phần đề nghị có thể
+// hiểu như sau: current > (recommended * 0.90) && current < (recommended * 
+// 1.10). Cơ bản thì khẩu phần ăn hiện tại nằm trong khoảng 90% và 110% của khẩu 
+// phần ăn đề nghị
+// TEST DATA:
+// const dogs = [
+//  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+//  { weight: 8, curFood: 200, owners: ['Matilda'] },
+//  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+//  { weight: 32, curFood: 340, owners: ['Michael'] }
+// ];
+const dogs = [
+	{ weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+	{ weight: 8, curFood: 200, owners: ['Matilda'] },
+	{ weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+	{ weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+dogs.forEach(
+	(dog) =>
+		// 1. Lặp mảng gồm các object là thông tin của những chú chó, và với mỗi chú chó,
+		// thêm 1 thuộc tính mới vào object là khẩu phẩn ăn hợp lý (recommended). KHÔNG
+		// TẠO THÊM MẢNG MỚI, chỉ đơn giản là lặp mảng. Công thức: recommendedFood
+		// = weight ** 0.75 * 28. (kết quả là khổi lượng thức ăn đượ tính theo gram, và cân
+		// nặng của chú chó được tính theo kg)
+		(dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28))
+);
+console.log(dogs);
+// 2. Tìm ra chú chó của Sarah và in ra console xem chú chó đó ăn quá nhiều hay quá
+// ít. Lưu ý: Lưu ý 1 vài chú chó có nhiều hơn 1 chủ, vì vậy bạn phải tìm ra Sarah
+// trong mảng 'owner' �
+const dogSarah = dogs.find((dog) => dog.owners.includes('Sarah'));
+console.log('🚀 ~ file: app.js:30 ~ dogSarah', dogSarah);
+if (dogSarah) {
+	console.log(
+		`chú chó đó ăn quá ${
+			dogSarah?.recommendedFood > dogSarah?.curFood ? 'it' : 'nhều'
+		}`
+	);
+}
+
+// 3. Tạo ra mảng chứa tất cả chủ của những chú chó ăn quá nhiều
+// ('ownersEatTooMuch') và 1 mảng chứa tất cả chủ của những chú chó ăn quá ít
+// ('ownersEatTooLittle').
+const ownersEatTooMuch = dogs
+	.filter((dog) => dog.curFood > dog.recommendedFood)
+	.map((dog) => dog.owners)
+	.flat();
+console.log('🚀 ~ file: app.js:45 ~ ownersEatTooMuch', ownersEatTooMuch);
+const ownersEatTooLittle = dogs
+	.filter((dog) => dog.curFood < dog.recommendedFood)
+	.map((dog) => dog.owners)
+	.flat();
+console.log('🚀 ~ file: app.js:51 ~ ownersEatTooLittle', ownersEatTooLittle);
+
+// 4. In ra 1 chuỗi tương ứng với mỗi mảng đã tạo ở Yêu cầu 3, Ví dụ: "Matilda and
+// Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat
+// too little!"
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+
+// 5. In ra xem có chú chó nào có khẩu phần ăn chính xác với khẩu phần ăn khuyến
+// nghị (output yêu cầu là 'true' hoặc 'false')
+dogs.forEach((dog) => {
+	console.log(`${dog.curFood === dog.recommendedFood ? true : false}`);
+});
+
+// 6. In ra xem có chú chó nào có khẩu phần ăn ở mức hợp lý (không >10% hoặc
+// <10% mức đề nghị)(output yêu cầu là 'true' hoặc 'false')
+console.log(
+	`${dogs.some((dog) =>
+		dog.curFood < dog.recommendedFood * 1.1 ||
+		dog.curFood > dog.recommendedFood * 0.9
+			? true
+			: false
+	)}`
+);
+
+// 7. In ra tất cả các chú chó có khẩu phần ăn hợp lý (sử dụng lại điều kiện đã tìm
+// được ở y.c 6 để in ra mảng gồm các phần tử thỏa mãn)
+const check = dogs.filter((dog) => {
+	return (
+		dog.curFood < dog.recommendedFood * 1.1 &&
+		dog.curFood > dog.recommendedFood * 0.9
+	);
+});
+console.log('🚀 ~ file: app.js:84 ~ check ~ check', check);
+
+// 8. Tạo ra 1 mảng chưa các chú chó mới và sắp xếp theo khẩu phần ăn đề nghị
+// theo thứ tự tăng dần (hãy nhớ rằng khẩu phần ăn của mỗi chú chó nằm trong
+// mảng mỗi object thuộc mảng)
+const dogCopy = [...dogs].sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log('🚀 ~ file: app.js:90 ~ dogCopy', dogCopy);
+
